@@ -93,7 +93,7 @@ public class BinarySearchTreeP<E extends Comparable<E>> {
 		if (node == null) {
 			return d;
 		}
-		// System.out.println("Depth node: " + node.data + ", d: " + d);
+		System.out.println("Depth node: " + node.data + ", d: " + d);
 
 		if (node.left != null) {
 			leftDepth = depthRec(node.left, d + 1);
