@@ -226,19 +226,13 @@ public class BinarySearchTreeP<E extends Comparable<E>> {
 			if (rightSibling != null && rightSibling != loop) {
 				loop = rightSibling;
 				System.out.print(loop.data + " ");
-				
-				if (loop.left != null) {
-					while (loop.left != null) {
-						loop = loop.left;
-						System.out.print(loop.data + " ");
-					}
-				} else if (loop.right != null) {
+				if (loop.left == null && loop.right != null) {
 					loop = loop.right;
 					System.out.print(loop.data + " ");
-					while (loop.left != null) {
-						loop = loop.left;
-						System.out.print(loop.data + " ");
-					}
+				}
+				while (loop.left != null) {
+					loop = loop.left;
+					System.out.print(loop.data + " ");
 				}
 			} else {
 				loop = loop.parent;
