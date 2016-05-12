@@ -28,6 +28,19 @@ public class BinarySearchTreeP<E extends Comparable<E>> {
 		printInOrderRec(node.right);
 	}
 
+	public  void printTreeRec(NodeP<E> entry, int n) {
+		if (entry == null)
+			return;
+		for (int i = 0; i < n; i++)
+			System.out.print(" ");
+		System.out.println(entry.data);
+		printTreeRec(entry.left, n + 2);
+		for (int i = 0; i < n; i++)
+			System.out.print(" ");
+		System.out.println("--");
+		printTreeRec(entry.right, n + 2);
+	}
+
 	public void insert(E value) {
 		NodeP<E> node = new NodeP<E>(value);
 		if (root == null) {
@@ -201,22 +214,31 @@ public class BinarySearchTreeP<E extends Comparable<E>> {
 	
 	public void traverseNonRec() {
 		NodeP<E> loop = root;		
-		System.out.println("data: " + loop.data);
+		System.out.print(loop.data + " ");
 
 		while (loop.left != null) {
 			loop = loop.left;
-			System.out.println("data: " + loop.data);
+			System.out.print(loop.data + " ");
 		}
 
 		do {
 			NodeP<E>  rightSibling = loop.parent.right;
 			if (rightSibling != null && rightSibling != loop) {
 				loop = rightSibling;
-				System.out.println("data: " + loop.data);
+				System.out.print(loop.data + " ");
 				
-				while (loop.left != null) {
-					loop = loop.left;
-					System.out.println("data: " + loop.data);
+				if (loop.left != null) {
+					while (loop.left != null) {
+						loop = loop.left;
+						System.out.print(loop.data + " ");
+					}
+				} else if (loop.right != null) {
+					loop = loop.right;
+					System.out.print(loop.data + " ");
+					while (loop.left != null) {
+						loop = loop.left;
+						System.out.print(loop.data + " ");
+					}
 				}
 			} else {
 				loop = loop.parent;

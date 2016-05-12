@@ -51,6 +51,8 @@ public class Main {
 		tree.insert(6);
 		tree.printInorder();
 		
+		//tree.printTreeRec(tree.root, 0);
+		
 		try {
 			System.out.println("Min: " + tree.getMin());
 			System.out.println("Max: " + tree.getMax());
